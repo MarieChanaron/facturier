@@ -7,11 +7,11 @@ import fr.mariech.facturier.entity.InvoiceLineItem;
 import fr.mariech.facturier.entity.Payment;
 import fr.mariech.facturier.repository.InvoiceLineItemRepository;
 import fr.mariech.facturier.repository.InvoiceRepository;
+import fr.mariech.facturier.util.Status;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class InvoiceService {
@@ -45,9 +45,21 @@ public class InvoiceService {
                 invoiceDto.setPaymentDto(paymentDto);
             }
 
+            List<InvoiceLineItem> invoiceLines = invoiceLineItemRepository.findInvoiceLineItemsByInvoice_InvoiceId(invoice.getInvoiceId());
+            double total = 0;
+
+            for (InvoiceLineItem lineItem : invoiceLines) {
+                byte quantity = lineItem.getQuantity();
+                double productPrice = lineItem.getProduct().getPriceBeforeVat().doubleValue();
+                double price = quantity * productPrice;
+                total += price;
+            }
+
+            invoiceDto.setTotal(total);
+
+            invoiceDto.setStatus(Status.getStatus(invoiceDto));
             invoiceDtoList.add(invoiceDto);
         }
-        System.out.println(invoiceDtoList);
 
         return invoiceDtoList;
     }

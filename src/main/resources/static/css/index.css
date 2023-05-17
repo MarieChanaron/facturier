@@ -1,0 +1,9 @@
+.background-color {
+    background-color: beige;
+}
+
+#visit-card {
+    width: fit-content;
+    padding: 8px 16px;
+    background-color: beige;
+}

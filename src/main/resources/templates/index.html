@@ -15,7 +15,7 @@
     <link th:href="@{/css/global.css}" rel="stylesheet"/>
     <link th:href="@{/css/header.css}" rel="stylesheet"/>
     <link th:href="@{/css/menu.css}" rel="stylesheet"/>
-    <link th:href="@{/css/client.css}" rel="stylesheet"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -26,9 +26,9 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="position-fixed">
 
-                <table class="table width-fit-content">
+                <table class="table width-fit-content background-color">
                     <thead>
                     <tr>
                         <th scope="col">Clients</th>
@@ -46,7 +46,7 @@
 
             </div>
 
-            <div class="col d-flex justify-content-end">
+            <div class="col d-flex justify-content-center mx-auto my-3">
                 <div th:if="${clientRequested != null}" id="visit-card" class="mx-5">
                     <div><p class="text-center" th:text="${clientRequested.companyName}"></p></div>
                     <hr>
@@ -73,19 +73,21 @@
                 </div>
 
                 <div th:if="${clientRequested != null}">
-                    <table class="table">
+                    <table class="table background-color">
                         <thead>
                         <tr>
-                            <th scope="col">Numéro de facture</th>
-                            <th scope="col">Date d'émission</th>
-                            <th scope="col">Date d'échéance</th>
+                            <th scope="col" class="px-5">Numéro</th>
+                            <th scope="col" class="px-5">Emis le</th>
+                            <th scope="col" class="px-5">Echéance</th>
+                            <th scope="col" class="px-5">Statut</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="invoice: ${clientRequested.invoices}">
-                            <th scope="row" th:text="${invoice.invoiceId}"></th>
-                            <td th:text="${invoice.issuingDate}"></td>
-                            <td th:text="${invoice.deadline}"></td>
+                            <th scope="row" th:text="${invoice.invoiceId}" class="px-5"></th>
+                            <td th:text="${invoice.issuingDate}" class="px-5"></td>
+                            <td th:text="${invoice.deadline}" class="px-5"></td>
+                            <td th:text="${invoice.status}" class="px-5"></td>
                         </tr>
                         </tbody>
                     </table>

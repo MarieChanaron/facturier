@@ -7,6 +7,7 @@ import fr.mariech.facturier.entity.Client;
 import fr.mariech.facturier.entity.Invoice;
 import fr.mariech.facturier.entity.Payment;
 import fr.mariech.facturier.repository.ClientRepository;
+import fr.mariech.facturier.util.Status;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class ClientService {
                     invoiceDto.setPaymentDto(paymentDto);
                 }
 
+                invoiceDto.setStatus(Status.getStatus(invoiceDto));
                 invoiceDtoList.add(invoiceDto);
             });
             clientDto.setInvoices(invoiceDtoList);

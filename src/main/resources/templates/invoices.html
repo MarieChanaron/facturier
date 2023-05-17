@@ -24,23 +24,26 @@
 
 <main>
 
-    <table class="table">
+    <table class="table container">
         <thead>
         <tr>
             <th scope="col">Numéro</th>
-            <th scope="col">Date d'émission</th>
-            <th scope="col">Date d'échéance</th>
-            <th scope="col">Montant total</th>
+            <th scope="col">Emission</th>
+            <th scope="col">Echéance</th>
+            <th scope="col">Total</th>
             <th scope="col">Statut</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">2</th>
-            <td>date</td>
-            <td>date</td>
-            <td>montant</td>
-            <td>statut</td>
+        <tr th:each="invoice: ${invoices}">
+            <th scope="row" th:text="${invoice.invoiceId}"></th>
+            <td th:text="${invoice.issuingDate}"></td>
+            <td th:text="${invoice.deadline}"></td>
+            <td>
+                <span th:text="${invoice.total}"></span>
+                <span>€</span>
+            </td>
+            <td th:text="${invoice.status}"></td>
         </tr>
         </tbody>
     </table>

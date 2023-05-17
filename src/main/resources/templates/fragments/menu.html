@@ -3,10 +3,12 @@
 
 <body th:fragment="menu">
 
-<div class="d-flex justify-content-end py-3 mb-4 container-fluid" id="menu">
-    <a href="#" th:href="@{clients}" class="ms-4">Clients</a>
-    <a href="#" th:href="@{factures}" class="ms-4">Factures</a>
-    <a href="#" th:href="@{produits}" class="ms-4">Produits</a>
+<div class="py-3 mb-4 container-fluid" id="menu">
+    <div class="container d-flex justify-content-end">
+        <a href="#" th:href="@{/clients}" class="ms-4">Clients</a>
+        <a href="#" th:href="@{/factures}" class="ms-4">Factures</a>
+        <a href="#" class="ms-4">Produits</a>
+    </div>
 </div>
 
 </body>

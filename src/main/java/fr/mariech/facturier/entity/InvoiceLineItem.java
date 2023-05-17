@@ -1,22 +1,25 @@
 package fr.mariech.facturier.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "invoice_line_item")
 @Data @NoArgsConstructor
+@IdClass(InvoiceLineItemId.class)
 public class InvoiceLineItem {
 
-    @EmbeddedId
-    private InvoiceLineItemId invoiceLineItemId;
-    @Column(name = "quantity")
+    @Id
+    @OneToOne
+    @JoinColumn(name = "invoice_id")
+    private Invoice invoice;
+
+    @Id
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     private byte quantity;
 
     // Prix : calculé - Valeur dans product
