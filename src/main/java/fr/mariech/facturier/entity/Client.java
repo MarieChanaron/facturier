@@ -20,4 +20,7 @@ public class Client {
     private String phone;
     @OneToMany(mappedBy = "client")
     private List<Invoice> invoices;
+    @ManyToOne
+    @JoinColumn(name = "address_id_fk")
+    private Address address;
 }

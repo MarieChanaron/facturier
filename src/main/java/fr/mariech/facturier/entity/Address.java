@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "address")
 @Data @NoArgsConstructor
@@ -22,4 +24,6 @@ public class Address {
     private String postcode;
     @Column(name = "city")
     private String city;
+    @OneToMany(mappedBy = "address")
+    private List<Client> clients;
 }
