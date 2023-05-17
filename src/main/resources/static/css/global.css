@@ -1,0 +1,28 @@
+:root {
+    --dark-teal: #00272E;
+    --medium-teal: #0A5461;
+    --blue: #00C9ED;
+    --orange: #FA7200;
+    --beige: #E8C4A6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1.4rem;
+}
+
+.block-center {
+    display: block;
+    width: fit-content;
+    margin: auto;
+}

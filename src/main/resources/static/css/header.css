@@ -1,0 +1,18 @@
+#header {
+    background-color: var(--dark-teal);
+    color: white;
+}
+
+#header a {
+    color: unset;
+}
+
+html {
+    font-size: 65%;
+}
+
+#title {
+    font-weight: 900;
+    font-size: 1.8rem;
+    letter-spacing: 0.3rem;
+}

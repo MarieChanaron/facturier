@@ -18,9 +18,10 @@ public class Client {
     private String companyName;
     @Column(name = "phone")
     private String phone;
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Invoice> invoices;
     @ManyToOne
     @JoinColumn(name = "address_id_fk")
     private Address address;
 }
+
