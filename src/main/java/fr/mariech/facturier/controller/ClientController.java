@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/clients")
+@RequestMapping({"/", "/clients"})
 public class ClientController {
 
     final ClientService clientService;
@@ -26,7 +26,7 @@ public class ClientController {
     public String getClients(Model model) {
         List<Client> clients = clientService.getAllClients();
         model.addAttribute("clients", clients);
-        return "clients";
+        return "index";
     }
 
     @GetMapping(path = "/{clientId}")
@@ -37,7 +37,7 @@ public class ClientController {
 
         if (client.isPresent()) {
             model.addAttribute("clientRequested", client.get());
-            return "clients";
+            return "index";
         }
 
         return "404";
