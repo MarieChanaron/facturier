@@ -24,77 +24,78 @@
 
 <main>
 
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
 
-                            <table class="table width-fit-content">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Clients</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="client: ${clients}">
-                                    <td>
-                                        <a href="#" th:href="@{'/clients/' + ${client.clientId}}" th:text="${client.companyName}" class="d-block"></a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                <table class="table width-fit-content">
+                    <thead>
+                    <tr>
+                        <th scope="col">Clients</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="client: ${clients}">
+                        <td>
+                            <a href="#" th:href="@{'/clients/' + ${client.clientId}}" th:text="${client.companyName}"
+                               class="d-block"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
 
-                        </div>
+            </div>
 
-                        <div class="col d-flex justify-content-end">
-                            <div th:if="${clientRequested != null}" id="visit-card" class="mx-5">
-                                <div><p class="text-center" th:text="${clientRequested.companyName}"></p></div>
-                                <hr>
-                                <div>
-                                    <p>
-                                        <span><img src="/images/ic_round-local-phone.svg" alt=""></span>
-                                        <span th:text="${clientRequested.phone}"></span>
-                                    </p>
-                                </div>
-                                <hr>
-                                <div>
-                                    <p>
-                                        <span th:text="${clientRequested.address.streetNumber}"></span>
-                                        <span th:text="${clientRequested.address.street}"></span>
-                                    </p>
-                                    <p>
-                                        <span th:text="${clientRequested.address.complementaryInfo}"></span>
-                                    </p>
-                                    <p>
-                                        <span th:text="${clientRequested.address.postcode}"></span>
-                                        <span th:text="${clientRequested.address.city}"></span>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div th:if="${clientRequested.invoices != null}">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Numéro de facture</th>
-                                            <th scope="col">Date d'émission</th>
-                                            <th scope="col">Date d'échéance</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="invoice: ${clientRequested.invoices}">
-                                            <td scope="row" th:text="${invoice.invoiceId}"></td>
-                                            <td th:text="${invoice.issuingDate}"></td>
-                                            <td th:text="${invoice.deadline}"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-
+            <div class="col d-flex justify-content-end">
+                <div th:if="${clientRequested != null}" id="visit-card" class="mx-5">
+                    <div><p class="text-center" th:text="${clientRequested.companyName}"></p></div>
+                    <hr>
+                    <div>
+                        <p>
+                            <span><img src="/images/ic_round-local-phone.svg" alt=""></span>
+                            <span th:text="${clientRequested.phone}"></span>
+                        </p>
                     </div>
-
+                    <hr>
+                    <div>
+                        <p>
+                            <span th:text="${clientRequested.address.streetNumber}"></span>
+                            <span th:text="${clientRequested.address.street}"></span>
+                        </p>
+                        <p>
+                            <span th:text="${clientRequested.address.complementaryInfo}"></span>
+                        </p>
+                        <p>
+                            <span th:text="${clientRequested.address.postcode}"></span>
+                            <span th:text="${clientRequested.address.city}"></span>
+                        </p>
+                    </div>
                 </div>
+
+                <div th:if="${clientRequested != null}">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Numéro de facture</th>
+                            <th scope="col">Date d'émission</th>
+                            <th scope="col">Date d'échéance</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="invoice: ${clientRequested.invoices}">
+                            <th scope="row" th:text="${invoice.invoiceId}"></th>
+                            <td th:text="${invoice.issuingDate}"></td>
+                            <td th:text="${invoice.deadline}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </main>
 
 </body>

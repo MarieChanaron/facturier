@@ -2,8 +2,10 @@ package fr.mariech.facturier.service;
 
 import fr.mariech.facturier.controller.dto.ClientDto;
 import fr.mariech.facturier.controller.dto.InvoiceDto;
+import fr.mariech.facturier.controller.dto.PaymentDto;
 import fr.mariech.facturier.entity.Client;
 import fr.mariech.facturier.entity.Invoice;
+import fr.mariech.facturier.entity.Payment;
 import fr.mariech.facturier.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +45,16 @@ public class ClientService {
                 invoiceDto.setInvoiceId(invoice.getInvoiceId());
                 invoiceDto.setIssuingDate(invoice.getIssuingDate());
                 invoiceDto.setDeadline(invoice.getDeadline());
-                invoiceDto.setPayment(invoice.getPayment());
+
+                Payment payment = invoice.getPayment();
+                if (payment != null) {
+                    PaymentDto paymentDto = new PaymentDto();
+                    paymentDto.setPaymentId(payment.getPaymentId());
+                    paymentDto.setPaymentMethod(payment.getPaymentMethod());
+                    paymentDto.setPaymentDate(payment.getPaymentDate());
+                    invoiceDto.setPaymentDto(paymentDto);
+                }
+
                 invoiceDtoList.add(invoiceDto);
             });
             clientDto.setInvoices(invoiceDtoList);

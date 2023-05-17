@@ -11,6 +11,6 @@ public class InvoiceDto {
     private long invoiceId;
     private LocalDateTime issuingDate;
     private LocalDateTime deadline;
-    private Payment payment;
+    private PaymentDto paymentDto;
 
 }
