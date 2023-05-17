@@ -37,8 +37,8 @@
         <tbody>
         <tr th:each="invoice: ${invoices}">
             <th scope="row" th:text="${invoice.invoiceId}"></th>
-            <td th:text="${invoice.issuingDate}"></td>
-            <td th:text="${invoice.deadline}"></td>
+            <td th:text="${#temporals.day(invoice.issuingDate)} + '/' + ${#temporals.month(invoice.issuingDate)} + '/' + ${#temporals.year(invoice.issuingDate)}"></td>
+            <td th:text="${#temporals.day(invoice.deadline)} + '/' + ${#temporals.month(invoice.deadline)} + '/' + ${#temporals.year(invoice.deadline)}"></td>
             <td>
                 <span th:text="${invoice.total}"></span>
                 <span>€</span>
