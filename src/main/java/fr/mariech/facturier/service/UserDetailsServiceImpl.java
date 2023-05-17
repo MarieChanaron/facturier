@@ -1,5 +1,4 @@
-package fr.mariech.phonebook.service;
-
+package fr.mariech.facturier.service;
 
 import fr.mariech.facturier.entity.Admin;
 import fr.mariech.facturier.repository.AdminRepository;
@@ -18,7 +17,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private AdminRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email)  throws UsernameNotFoundException {
         Optional<Admin> admin = userRepository.findByUsername(email);
         if (admin.isEmpty()) {
             throw new UsernameNotFoundException("Mauvais identifiants");

@@ -52,7 +52,7 @@ public class WebSecurityConfig {
                     //.loginPage("/login")
                     .usernameParameter("username")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/index")
+                    .defaultSuccessUrl("/clients")
                     .permitAll();
             }).logout(logout -> {
                 logout
