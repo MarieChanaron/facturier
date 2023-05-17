@@ -4,3 +4,7 @@
     background-color: var(--beige);
     letter-spacing: 0.1rem;
 }
+
+#menu {
+    background-color: lightgrey;
+}
